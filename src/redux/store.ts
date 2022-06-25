@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 import counterReducer from "./reducers/counterReducer"
+import resumeReducer from "./reducers/resumeReducer"
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
+    resume: resumeReducer,
   },
 })
 
