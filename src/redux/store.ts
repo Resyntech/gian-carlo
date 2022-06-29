@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
-import counterReducer from "./reducers/counterReducer"
+// import joyiceReducer from "./reducers/joyiceReducer"
 import resumeReducer from "./reducers/resumeReducer"
+// import shopReducer from "./reducers/shopReducer"
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    // joyice: joyiceReducer,
     resume: resumeReducer,
+    // shop: shopReducer,
   },
 })
 

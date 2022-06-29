@@ -3,6 +3,7 @@ import type { RootState } from "../store"
 
 // Define a type for the slice state
 interface ResumeState {
+  skills: Array<{ name: string; progress: string | number }>
   info: { name: string; email: string; num: string; address: string }
   charRef: Array<{ name: string; pos: string; num: string }>
   main: Array<{
@@ -13,6 +14,14 @@ interface ResumeState {
 
 // Define the initial state using that type
 const initialState: ResumeState = {
+  skills: [
+    { name: "prototyping", progress: 70 },
+    { name: "HTML", progress: 90 },
+    { name: "CSS", progress: 90 },
+    { name: "javascript", progress: 60 },
+    { name: "photoshop", progress: 60 },
+    { name: "illutrator", progress: 50 },
+  ],
   info: {
     name: "Gian Carlo Adarayan Carranza",
     email: "carranzagcarlo@gmail.com",

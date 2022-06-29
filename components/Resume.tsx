@@ -4,15 +4,10 @@ import Image from "next/image"
 const dimension = 14
 const Resume = () => {
   const resume = useAppSelector((state) => state.resume)
-  const info = resume.info
+  const { name, email, num, address } = resume.info
   return (
     <section className="h-screen">
-      <Header
-        name={info.name}
-        email={info.email}
-        num={info.num}
-        address={info.address}
-      />
+      <Header name={name} email={email} num={num} address={address} />
       <div className="grid grid-cols-[minmax(0,2fr),minmax(0,1fr)] ">
         <Experiences />
         <Personal />
@@ -23,7 +18,7 @@ const Resume = () => {
 
 const Header = (props: any) => {
   return (
-    <header className="bg-secondary text-white p-6">
+    <header className="bg-resume-secondary text-white p-4">
       <div>
         <h1 className="text-3xl font-bold">{props.name}</h1>
         <PhoneNumber num={props.num} />
@@ -61,10 +56,10 @@ const Header = (props: any) => {
 const Experiences = () => {
   const main = useAppSelector((state) => state.resume.main)
   return (
-    <div className="bg-paper">
+    <div className="bg-resume-paper">
       {main.map(({ title, info }, I: number) => (
         <section key={I}>
-          <div className="flex gap-2 m-2">
+          <div className="flex gap-2 m-6">
             <Image
               alt="header-icons"
               src={
@@ -80,7 +75,7 @@ const Experiences = () => {
             <h1 className="text-xl font-bold">{title}</h1>
           </div>
           {info.map(({ desc, location, date }, index: number) => (
-            <div key={index} className="m-6">
+            <div key={index} className="m-8">
               {location && <p className="font-bold">{location}</p>}
               {desc && <p className="font-semibold">{desc}</p>}
               {date && <p>{date}</p>}
@@ -93,18 +88,15 @@ const Experiences = () => {
 }
 const Personal = () => {
   const charSet = useAppSelector((state) => state.resume.charRef)
+  const skills = useAppSelector((state) => state.resume.skills)
   return (
-    <div className="bg-primary p-6 grid grid-rows-[minmax(0,2fr),minmax(0,1fr),minmax(0,1fr)]">
+    <div className="bg-resume-primary p-6 grid grid-rows-[minmax(0,2fr),minmax(0,1fr),minmax(0,1fr)]">
       <section>
         <h2 className="text-center text-xl font-bold -mt-4">Skills</h2>
         <div className="m-4 grid gap-4">
-          <Progress skill="prototyping" value="70" />
-          <Progress skill="HTML & CSS" value="90" />
-          <Progress skill="typescript" value="20" />
-          <Progress skill="javascript" value="70" />
-          <Progress skill="photoshop" value="60" />
-          <Progress skill="illustrator" value="60" />
-          <Progress skill="animate" value="50" />
+          {skills.map(({ name, progress }, I: number) => (
+            <Progress key={I} skill={name} height={20} progress={progress} />
+          ))}
         </div>
       </section>
       <section className="grid gap-4">
@@ -137,10 +129,22 @@ const PhoneNumber = ({ num }: { num: string }) => (
   </div>
 )
 
-const Progress = (props: any) => (
-  <div className="relative">
-    <label className="absolute pl-2 capitalize text-white">{props.skill}</label>
-    <progress className="w-full h-6" value={props.value} max="100" />
+const Progress = ({
+  progress,
+  height,
+  skill,
+}: {
+  progress: number | string
+  height: number
+  skill?: string
+}) => (
+  <div style={{ height }} className="w-full bg-resume-paper rounded-lg">
+    <div
+      style={{ width: `${progress}%` }}
+      className="h-full rounded-lg bg-resume-fill text-right"
+    >
+      <span className="m-2 text-black text-xs font-semibold capitalize">{`${skill}`}</span>
+    </div>
   </div>
 )
 

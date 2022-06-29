@@ -1,48 +1,95 @@
-import { useAppSelector, useAppDispatch } from "../src/redux/hooks"
-import {
-  increment,
-  decrement,
-  incrementAsync,
-} from "../src/redux/reducers/counterReducer"
+import { useRef, forwardRef } from "react"
 import ReactToPrint from "react-to-print"
-import React from "react"
 import Resume from "../components/Resume"
+// import { Canvas } from "@react-three/fiber"
+// import Box from "../components/ThreeComponents/Box"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function Home() {
-  const ref: any = React.useRef()
-  const cValue = useAppSelector((state) => state.counter.value)
-  const dispatch = useAppDispatch()
+  const ref: any = useRef()
+  interface Social {
+    details: Array<{
+      href: string
+      label: string
+      delay?: string
+    }>
+  }
+  const dimension: number = 40
+  const social: Social = {
+    details: [
+      {
+        href: "https://www.fiverr.com/resyntech",
+        label: "fiverr",
+        delay: "delay-1",
+      },
+      {
+        href: "https://github.com/Resyntech",
+        label: "github",
+        delay: "delay-2",
+      },
+      {
+        href: "https://www.linkedin.com/in/gian-carlo-carranza-5a6861216/",
+        label: "linkedin",
+        delay: "delay-3",
+      },
+      {
+        href: "https://www.youtube.com/channel/UCtnF1a7ZVYnt-ybxErb1TDg",
+        label: "youtube",
+        delay: "delay-4",
+      },
+    ],
+  }
 
   return (
+    // <Canvas className="bg-yellow-600">
+    //   <Box position={[-1.2, 0, 0]} />
     <>
       <div ref={ref}>
         <Resume />
       </div>
-      <ReactToPrint
-        trigger={() => <Button>Print</Button>}
-        content={() => ref.current}
-      />
+      <div className="flex items-center justify-center gap-2 fixed bottom-0 bg-white/20 inset-x-0 p-4">
+        <ReactToPrint
+          trigger={() => <Button>Print</Button>}
+          content={() => ref.current}
+        />
+        <div className="grid grid-flow-col gap-2">
+          {social.details.map(({ href, label, delay }, I: number) => (
+            <Link key={I} href={href} passHref>
+              <Anchor className={`${delay}`}>
+                <Image
+                  alt={`${label.substring(0, 1).toUpperCase()}${label.substring(
+                    1,
+                    label.length
+                  )}`}
+                  src={`/${label}.svg`}
+                  width={dimension}
+                  height={dimension}
+                />
+              </Anchor>
+            </Link>
+          ))}
+        </div>
+      </div>
     </>
-    // <div className="text-3xl bold flex items-center justify-center h-screen bg-gray-200 w-[80vw] mx-auto">
-    //
-    //   <h1>{cValue}</h1>
-    //   <input
-    //     className="border-2 border-black"
-    //     type="number"
-    //     onChange={(event) =>
-    //       dispatch(incrementAsync(JSON.parse(event.target.value)))
-    //     }
-    //   />
-    //   <Button onClick={() => dispatch(increment())}>+</Button>
-    //   <Button onClick={() => dispatch(decrement())}>-</Button>
-    // </div>
+    // </Canvas>
   )
 }
 
-function Button(props: any) {
+const Anchor = forwardRef((props: JSX.IntrinsicElements["a"], ref: any) => (
+  <a
+    {...props}
+    ref={ref}
+    className={`${props.className} text-blue-400 font-black animate-bounce underline`}
+  >
+    {props.children}
+  </a>
+))
+
+function Button(props: JSX.IntrinsicElements["button"]) {
   return (
     <button
-      className="capitalize border-2 border-black"
+      className="capitalize border-2 border-blue-400 text-blue-400 px-4 py-2 rounded-lg"
       onClick={props.onClick}
     >
       {props.children}
