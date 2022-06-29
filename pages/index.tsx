@@ -5,6 +5,7 @@ import Resume from "../components/Resume"
 // import Box from "../components/ThreeComponents/Box"
 import Link from "next/link"
 import Image from "next/image"
+import Head from "next/head"
 
 export default function Home() {
   const ref: any = React.useRef()
@@ -45,6 +46,13 @@ export default function Home() {
     // <Canvas className="bg-yellow-600">
     //   <Box position={[-1.2, 0, 0]} />
     <>
+      <Head>
+        <title>Gian Carlo Carranza | Resume</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </Head>
       <div ref={ref}>
         <Resume />
       </div>
