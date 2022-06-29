@@ -1,4 +1,4 @@
-import { useRef, forwardRef } from "react"
+import React from "react"
 import ReactToPrint from "react-to-print"
 import Resume from "../components/Resume"
 // import { Canvas } from "@react-three/fiber"
@@ -7,7 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 
 export default function Home() {
-  const ref: any = useRef()
+  const ref: any = React.useRef()
   interface Social {
     details: Array<{
       href: string
@@ -76,15 +76,17 @@ export default function Home() {
   )
 }
 
-const Anchor = forwardRef((props: JSX.IntrinsicElements["a"], ref: any) => (
-  <a
-    {...props}
-    ref={ref}
-    className={`${props.className} text-blue-400 font-black animate-bounce underline`}
-  >
-    {props.children}
-  </a>
-))
+const Anchor = React.forwardRef(
+  (props: JSX.IntrinsicElements["a"], ref: any) => (
+    <a
+      {...props}
+      ref={ref}
+      className={`${props.className} text-blue-400 font-black animate-bounce underline`}
+    >
+      {props.children}
+    </a>
+  )
+)
 
 function Button(props: JSX.IntrinsicElements["button"]) {
   return (
