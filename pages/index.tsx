@@ -90,6 +90,8 @@ const Anchor = React.forwardRef(
   }
 )
 
+Anchor.displayName = "AnchorComponent"
+
 function Button(props: JSX.IntrinsicElements["button"]) {
   return (
     <button
