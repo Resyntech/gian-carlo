@@ -77,15 +77,17 @@ export default function Home() {
 }
 
 const Anchor = React.forwardRef(
-  (props: JSX.IntrinsicElements["a"], ref: any) => (
-    <a
-      {...props}
-      ref={ref}
-      className={`${props.className} text-blue-400 font-black animate-bounce underline`}
-    >
-      {props.children}
-    </a>
-  )
+  (props: JSX.IntrinsicElements["a"], ref: any) => {
+    return (
+      <a
+        {...props}
+        ref={ref}
+        className={`${props.className} text-blue-400 font-black animate-bounce underline`}
+      >
+        {props.children}
+      </a>
+    )
+  }
 )
 
 function Button(props: JSX.IntrinsicElements["button"]) {
