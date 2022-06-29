@@ -50,7 +50,7 @@ export default function Home() {
         <title>Gian Carlo Carranza | Resume</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta charSet="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <div ref={ref}>
