@@ -19,6 +19,6 @@
 
 @layer components {
   .paragraph {
-    @apply text-xs w-min sm:text-base sm:w-fit;
+    @apply text-base;
   }
 }

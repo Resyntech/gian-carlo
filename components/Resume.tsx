@@ -93,14 +93,14 @@ const Personal = () => {
     <div className="bg-resume-primary p-6 grid grid-rows-[minmax(0,2fr),minmax(0,1fr),minmax(0,1fr)]">
       <section>
         <h2 className="sm:text-center text-xl font-bold -mt-4">Skills</h2>
-        <div className="sm:m-4 -ml-4 sm:ml-0 grid gap-4 sm:w-full w-fit">
+        <div className="sm:m-4 -ml-4 sm:ml-0 grid gap-4">
           {skills.map(({ name, progress }, I: number) => (
             <Progress key={I} skill={name} height={20} progress={progress} />
           ))}
         </div>
       </section>
       <section className="grid gap-4">
-        <h2 className="sm:text-center sm:text-xl font-bold text-xs w-min">
+        <h2 className="sm:text-center sm:text-xl font-bold paragraph">
           References
         </h2>
         {charSet.map((E, I: number) => (
@@ -120,7 +120,7 @@ const Reference = (props: any) => (
 )
 
 const PhoneNumber = ({ num }: { num: string }) => (
-  <div className="sm:flex sm:gap-2">
+  <div className="flex gap-2">
     <Image
       src="/phone-solid.svg"
       alt="phoone-icon"
