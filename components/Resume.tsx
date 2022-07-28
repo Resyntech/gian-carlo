@@ -92,8 +92,8 @@ const Personal = () => {
   return (
     <div className="bg-resume-primary p-6 grid grid-rows-[minmax(0,2fr),minmax(0,1fr),minmax(0,1fr)]">
       <section>
-        <h2 className="sm:text-center text-xl font-bold -mt-4">Skills</h2>
-        <div className="sm:m-4 -ml-4 sm:ml-0 grid gap-4">
+        <h2 className="text-center text-xl font-bold -mt-4">Skills</h2>
+        <div className="m-4 sm:ml-0 grid gap-4">
           {skills.map(({ name, progress }, I: number) => (
             <Progress key={I} skill={name} height={20} progress={progress} />
           ))}
