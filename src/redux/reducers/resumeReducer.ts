@@ -17,10 +17,10 @@ const initialState: ResumeState = {
   skills: [
     { name: "prototyping", progress: 70 },
     { name: "HTML", progress: 90 },
+    { name: "javascript", progress: 80 },
+    { name: "PHP", progress: 40 },
+    { name: "Java", progress: 40 },
     { name: "CSS", progress: 90 },
-    { name: "javascript", progress: 60 },
-    { name: "photoshop", progress: 60 },
-    { name: "illutrator", progress: 50 },
   ],
   info: {
     name: "Gian Carlo Adarayan Carranza",

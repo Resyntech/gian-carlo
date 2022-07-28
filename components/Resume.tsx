@@ -20,7 +20,7 @@ const Header = (props: any) => {
   return (
     <header className="bg-resume-secondary text-white p-4">
       <div>
-        <h1 className="text-3xl font-bold">{props.name}</h1>
+        <h1 className="text-3xl font-bold paragraph">{props.name}</h1>
         <PhoneNumber num={props.num} />
         <div className="flex gap-2">
           <Image
@@ -29,7 +29,7 @@ const Header = (props: any) => {
             width={dimension}
             height={dimension}
           />
-          <p>{props.email}</p>
+          <p className="paragraph">{props.email}</p>
         </div>
         <div className="flex gap-2">
           <Image
@@ -38,15 +38,15 @@ const Header = (props: any) => {
             width={dimension}
             height={dimension}
           />
-          <p>{props.address}</p>
+          <p className="paragraph">{props.address}</p>
         </div>
       </div>
       <div className="absolute top-4 right-6">
         <Image
           src="/avatar.jpg"
           alt="profile-picture"
-          width={dimension * 8}
-          height={dimension * 8}
+          width={dimension * 6}
+          height={dimension * 6}
         />
       </div>
     </header>
@@ -72,13 +72,13 @@ const Experiences = () => {
               width={dimension}
               height={dimension}
             />
-            <h1 className="text-xl font-bold">{title}</h1>
+            <h1 className="text-xl font-bold paragraph">{title}</h1>
           </div>
           {info.map(({ desc, location, date }, index: number) => (
             <div key={index} className="m-8">
-              {location && <p className="font-bold">{location}</p>}
-              {desc && <p className="font-semibold">{desc}</p>}
-              {date && <p>{date}</p>}
+              {location && <p className="font-bold paragraph">{location}</p>}
+              {desc && <p className="font-semibold paragraph">{desc}</p>}
+              {date && <p className="paragraph">{date}</p>}
             </div>
           ))}
         </section>
@@ -92,15 +92,17 @@ const Personal = () => {
   return (
     <div className="bg-resume-primary p-6 grid grid-rows-[minmax(0,2fr),minmax(0,1fr),minmax(0,1fr)]">
       <section>
-        <h2 className="text-center text-xl font-bold -mt-4">Skills</h2>
-        <div className="m-4 grid gap-4">
+        <h2 className="sm:text-center text-xl font-bold -mt-4">Skills</h2>
+        <div className="sm:m-4 -ml-4 sm:ml-0 grid gap-4 sm:w-full w-fit">
           {skills.map(({ name, progress }, I: number) => (
             <Progress key={I} skill={name} height={20} progress={progress} />
           ))}
         </div>
       </section>
       <section className="grid gap-4">
-        <h2 className="text-center text-xl font-bold">References</h2>
+        <h2 className="sm:text-center sm:text-xl font-bold text-xs w-min">
+          References
+        </h2>
         {charSet.map((E, I: number) => (
           <Reference key={I} name={E.name} pos={E.pos} num={E.num} />
         ))}
@@ -111,21 +113,21 @@ const Personal = () => {
 
 const Reference = (props: any) => (
   <div>
-    <h3 className="font-semibold">{props.name}</h3>
-    <p>{props.pos}</p>
+    <h3 className="font-semibold paragraph">{props.name}</h3>
+    <p className="paragraph">{props.pos}</p>
     <PhoneNumber num={props.num} />
   </div>
 )
 
 const PhoneNumber = ({ num }: { num: string }) => (
-  <div className="flex gap-2">
+  <div className="sm:flex sm:gap-2">
     <Image
       src="/phone-solid.svg"
       alt="phoone-icon"
       width={dimension}
       height={dimension}
     />
-    <p>{`+(63)${num}`}</p>
+    <p className="paragraph">{`0${num}`}</p>
   </div>
 )
 

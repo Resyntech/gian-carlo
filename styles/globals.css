@@ -16,3 +16,9 @@
     animation-delay: 400ms;
   }
 }
+
+@layer components {
+  .paragraph {
+    @apply text-xs w-min sm:text-base sm:w-fit;
+  }
+}
