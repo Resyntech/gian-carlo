@@ -46,7 +46,7 @@ const initialState: ResumeState = {
       info: [
         {
           desc: "Music Notation, Transcriptions and Arrangements",
-          location: "Freelance - Fiver",
+          location: "Freelance - Fiverr",
           date: "2020 - Present",
         },
         {
